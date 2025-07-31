@@ -4,3 +4,5 @@ docs/*
 .gitignore
 CONTRIBUTING.md
 test/*
+upload_to_nexus.sh
+*.tgz
