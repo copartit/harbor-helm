@@ -137,6 +137,11 @@ spec:
             name: "{{ template "harbor.jobservice" . }}"
         ports:
         - containerPort: {{ template "harbor.jobservice.containerPort" . }}
+          name: {{ template "harbor.jobservice.containerPortName" . }}
+        {{- if .Values.metrics.enabled}}
+        - containerPort: {{ .Values.metrics.jobservice.port }}
+          name: http-metrics
+        {{- end }}
         volumeMounts:
         - name: jobservice-config
           mountPath: /etc/jobservice/config.yml

@@ -340,6 +340,15 @@ app: "{{ template "harbor.name" . }}"
   {{- end -}}
 {{- end -}}
 
+{{/* core component container port name */}}
+{{- define "harbor.core.containerPortName" -}}
+  {{- if .Values.internalTLS.enabled -}}
+    {{- printf "https" -}}
+  {{- else -}}
+    {{- printf "http" -}}
+  {{- end -}}
+{{- end -}}
+
 {{/* core component service port */}}
 {{- define "harbor.core.servicePort" -}}
   {{- if .Values.internalTLS.enabled -}}
@@ -355,6 +364,15 @@ app: "{{ template "harbor.name" . }}"
     {{- printf "8443" -}}
   {{- else -}}
     {{- printf "8080" -}}
+  {{- end -}}
+{{- end -}}
+
+{{/* jobservice component container port name */}}
+{{- define "harbor.jobservice.containerPortName" -}}
+  {{- if .Values.internalTLS.enabled -}}
+    {{- printf "https" -}}
+  {{- else -}}
+    {{- printf "http" -}}
   {{- end -}}
 {{- end -}}
 
@@ -391,6 +409,15 @@ app: "{{ template "harbor.name" . }}"
     {{- printf "5443" -}}
   {{- else -}}
     {{- printf "5000" -}}
+  {{- end -}}
+{{- end -}}
+
+{{/* registry component container port name */}}
+{{- define "harbor.registry.containerPortName" -}}
+  {{- if .Values.internalTLS.enabled -}}
+    {{- printf "https" -}}
+  {{- else -}}
+    {{- printf "http" -}}
   {{- end -}}
 {{- end -}}
 
