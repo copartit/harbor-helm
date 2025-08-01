@@ -110,6 +110,7 @@ spec:
         {{- end }}
         ports:
         - containerPort: {{ .Values.metrics.exporter.port }}
+          name: http-metrics
         volumeMounts:
         {{- if .Values.caBundleSecretName }}
 {{ include "harbor.caBundleVolumeMount" . | indent 8 }}
