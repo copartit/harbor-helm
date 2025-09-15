@@ -707,6 +707,8 @@ jobservice:
   existingSecret: ""
   # Key within the existing secret for the job service secret
   existingSecretKey: JOBSERVICE_SECRET
+  # Also mount these existing configmaps to jobservice pods:
+  mountExistingConfigMaps: []
 
 registry:
   registry:
@@ -795,6 +797,8 @@ registry:
     # the interval of the purge operations
     interval: 24h
     dryrun: false
+  # Also mount these existing configmaps to registry pods:
+  mountExistingConfigMaps: []
 
 trivy:
   # enabled the flag to enable Trivy scanner

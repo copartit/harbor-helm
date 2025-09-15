@@ -160,6 +160,11 @@ spec:
       - name: jobservice-config
         configMap:
           name: "{{ template "harbor.jobservice" . }}"
+      {{- range .Values.jobservice.mountExistingConfigMaps }}
+      - name: {{ . | quote }}
+        configMap:
+          name: {{ . | quote }}
+      {{- end }}
       - name: job-logs
         {{- if and .Values.persistence.enabled (has "file" .Values.jobservice.jobLoggers) }}
         persistentVolumeClaim:
