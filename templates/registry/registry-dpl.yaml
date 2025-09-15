@@ -365,6 +365,11 @@ spec:
 {{ include "harbor.caBundleVolumeMount" . | indent 8 }}
         {{- end }}
       volumes:
+      {{- range .Values.registry.mountExistingConfigMaps }}
+      - name: {{ . | quote }}
+        configMap:
+          name: {{ . | quote }}
+      {{- end }}
       - name: registry-htpasswd
         secret:
           {{- if not .Values.registry.credentials.existingSecret }}
