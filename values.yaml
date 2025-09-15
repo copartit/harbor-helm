@@ -802,6 +802,8 @@ jobservice:
   existingSecret: ""
   # Key within the existing secret for the job service secret
   existingSecretKey: JOBSERVICE_SECRET
+  # Also mount these existing configmaps to jobservice pods:
+  mountExistingConfigMaps: []
   # By default, the timeout is set to 30 minutes. This field only needs be re-configured if a longer request timeout is required.
   # the value assigned to timeout should be a number without min, e.g. registryHttpClientTimeout: 60 configures the timeout to 60 minutes
   registryHttpClientTimeout: 30
@@ -925,6 +927,8 @@ registry:
     # the interval of the purge operations
     interval: 24h
     dryrun: false
+  # Also mount these existing configmaps to registry pods:
+  mountExistingConfigMaps: []
 
 trivy:
   # enabled the flag to enable Trivy scanner
