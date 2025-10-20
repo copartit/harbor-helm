@@ -709,6 +709,10 @@ jobservice:
   existingSecretKey: JOBSERVICE_SECRET
   # Also mount these existing configmaps to jobservice pods:
   mountExistingConfigMaps: []
+  # Copart customization
+  redis:
+    namespace: "harbor_job_service_namespace"
+    idleTimeout: 3600
 
 registry:
   registry:

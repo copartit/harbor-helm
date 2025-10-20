@@ -20,8 +20,8 @@ data:
       backend: "redis"
       redis_pool:
         redis_url: "{{ template "harbor.redis.urlForJobservice" . }}"
-        namespace: "harbor_job_service_namespace"
-        idle_timeout_second: 3600
+        namespace: "{{ .Values.jobservice.redis.namespace | default "harbor_job_service_namespace" }}"
+        idle_timeout_second: {{ .Values.jobservice.redis.idleTimeout | default 3600 }}
     job_loggers:
       {{- if has "file" .Values.jobservice.jobLoggers }}
       - name: "FILE"
